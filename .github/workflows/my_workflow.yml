@@ -39,3 +39,4 @@ jobs:
         with:
           token: "${{ github.token }}"
           target_url: localhost:8080/game2048
+      - run: tomcat7:run
