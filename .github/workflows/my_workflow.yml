@@ -18,3 +18,11 @@ jobs:
     steps:    
       - name: Make Unit-Tests
         run: mvn test
+
+  package:
+    runs-on: [self-hosted, linux]
+    needs: [build, test]
+    
+    steps:
+      - name: Create Package
+        run: mvn package
