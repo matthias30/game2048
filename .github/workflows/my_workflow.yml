@@ -10,3 +10,6 @@ jobs:
 
     - name: Compile project
       run: mvn compile
+      
+    - name: Make Unit-Tests
+      run: mvn test
