@@ -34,4 +34,4 @@ jobs:
     steps:
       - run: mvn tomcat7:run
         env:
-          url: localhost:8080/game2048
+          target_url: localhost:8080/game2048
