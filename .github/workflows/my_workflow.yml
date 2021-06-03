@@ -32,6 +32,6 @@ jobs:
     needs: [build, test, package]
     
     steps:
-      - run: docker rm --force tomcat 
-      - run: docker image rm --force game2048
-      - run: docker run --rm -d --name tomcat -p 8080:8080 game2048
+      - run: rm --force tomcat 
+      - run: image rm --force game2048
+      - run: run --rm -d --name tomcat -p 8080:8080 game2048
