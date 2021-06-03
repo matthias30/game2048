@@ -32,7 +32,6 @@ jobs:
     needs: [build, test, package]
     
     steps:
-      - name: Deploy
+      - run: mvn tomcat7:run
         env:
           url: localhost:8080/game2048
-      - run: mvn tomcat7:run
