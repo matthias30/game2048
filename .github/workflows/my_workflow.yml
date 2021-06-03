@@ -9,4 +9,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Compile project
-      run: mvn package
+      run: mvn compile
