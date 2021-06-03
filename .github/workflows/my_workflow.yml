@@ -2,7 +2,8 @@ name: game2048_workflow
 on: [push]
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
   
     steps:
-      -run: mvn compile
+      - name: Build Project
+      - run: mvn compile
