@@ -2,7 +2,7 @@ name: game2048_workflow
 on: [push]
 jobs:
   build:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted]
  
     steps: 
     - name: Checkout project
@@ -12,7 +12,7 @@ jobs:
       run: mvn compile
   
   test:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted]
     needs: [build]
     
     steps:    
@@ -20,7 +20,7 @@ jobs:
         run: mvn test
 
   package:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted]
     needs: [build, test]
     
     steps:
@@ -28,9 +28,9 @@ jobs:
         run: mvn package
         
   deploy:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted]
     needs: [build, test, package]
     
     steps:
-      - name: Deploy 
+      - name: Deploy Game
         run: cp ./target/game2048.war /usr/local/tomcat/webapps
