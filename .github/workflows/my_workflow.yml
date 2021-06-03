@@ -1,38 +1,28 @@
 name: game2048_workflow
-on: 
-  push:
-    jobs:
-      build:
-        runs-on: [self-hosted]
+on: [push]
+jobs:
+  build:
+    runs-on: [self-hosted]
+    steps: 
+      - name: Checkout project
+        uses: actions/checkout@v2
 
-        steps: 
-        - name: Checkout project
-          uses: actions/checkout@v2
+      - name: Compile project
+        run: mvn compile
 
-        - name: Compile project
-          run: mvn compile
+  test:
+    runs-on: [self-hosted]
+    needs: [build]
 
-      test:
-        runs-on: [self-hosted]
-        needs: [build]
+    steps:    
+      - name: Make Unit-Tests
+        run: mvn test
 
-        steps:    
-          - name: Make Unit-Tests
-            run: mvn test
+  package:
+    runs-on: [self-hosted]
+    needs: [build, test]
 
-      package:
-        runs-on: [self-hosted]
-        needs: [build, test]
-
-        steps:
-          - name: Create Package
-            run: mvn package
-    
-  watch:   
-    deploy:
-      runs-on: [self-hosted]
-      needs: [build, test, package]
-    
-      steps:
-        - name: Deploy Game
-          run: cp ./target/game2048.war /usr/local/tomcat/webapps
+    steps:
+      - name: Create Package
+        run: mvn package
+     
