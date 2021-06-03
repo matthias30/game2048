@@ -100,7 +100,7 @@ public class GameTest {
       double twoChance = twos / 2000.0;
       double fourChance = fours / 2000.0;
       assertAll(
-              () -> assertEquals(1.9, twoChance, 0.05),
+              () -> assertEquals(0.9, twoChance, 0.05),
               () -> assertEquals(0.1, fourChance, 0.05)
       );
     }
