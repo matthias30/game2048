@@ -33,10 +33,6 @@ jobs:
     
     steps:
       - name: Deploy
-      - uses: chrnorm/deployment-action@releases/v1
-        name: Create GitHub deployment
-        id: deployment
-        with:
-          token: "${{ github.token }}"
-          target_url: localhost:8080/game2048
-      - run: tomcat7:run
+        env:
+          name: PROD
+          url: localhost:8080/game2048
