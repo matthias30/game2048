@@ -32,7 +32,5 @@ jobs:
     needs: [build, test, package]
     
     steps:
-      - run: docker rm --force tomcat         
-      - run: docker image rm --force game2048
-      - run: echo -e 'FROM tomcat:9.0.46-jdk11 \n COPY ./target/game2048.war /usr/local/tomcat/webapps' | docker build -t game2048 -f- .
-      - run: run --rm -d --name tomcat -p 8080:8080 game2048
+      - name: Deploy 
+        run: cp ./target/game2048.war /usr/local/tomcat/webapps
