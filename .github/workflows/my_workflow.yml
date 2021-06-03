@@ -26,3 +26,11 @@ jobs:
     steps:
       - name: Create Package
         run: mvn package
+        
+  deploy:
+    runs-on: [self-hosted, linux]
+    needs: [build, test, package]
+    
+    steps:
+      - name: Deploy
+        run: mvn tomcat7:run
