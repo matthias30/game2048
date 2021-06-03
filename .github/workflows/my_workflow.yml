@@ -10,6 +10,11 @@ jobs:
 
     - name: Compile project
       run: mvn compile
-      
-    - name: Make Unit-Tests
-      run: mvn test
+  
+  test:
+    runs-on: [self-hosted, linux]
+    needs: [build]
+    
+    steps:    
+      - name: Make Unit-Tests
+        run: mvn test
